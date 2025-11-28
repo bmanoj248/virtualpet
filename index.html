@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelPaw - Virtual Pet</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐾 PixelPaw Virtual Pet 🐾</h1>
+            <div class="pet-name-container">
+                <input type="text" id="petNameInput" placeholder="Name your pet..." maxlength="15">
+                <button id="setNameBtn">Set Name</button>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="pet-area">
+                <div class="pet-container">
+                    <div id="pet" class="pet">
+                        <div class="pet-face">
+                            <div class="eye left-eye"></div>
+                            <div class="eye right-eye"></div>
+                            <div class="nose"></div>
+                            <div class="mouth"></div>
+                        </div>
+                        <div class="pet-body"></div>
+                    </div>
+                    <div id="petName" class="pet-name-display"></div>
+                </div>
+                
+                <div class="status-bars">
+                    <div class="status-item">
+                        <span class="status-label">❤️ Health</span>
+                        <div class="bar-container">
+                            <div id="healthBar" class="bar health-bar"></div>
+                        </div>
+                        <span id="healthValue" class="status-value">100%</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">🍖 Hunger</span>
+                        <div class="bar-container">
+                            <div id="hungerBar" class="bar hunger-bar"></div>
+                        </div>
+                        <span id="hungerValue" class="status-value">100%</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">😊 Happiness</span>
+                        <div class="bar-container">
+                            <div id="happinessBar" class="bar happiness-bar"></div>
+                        </div>
+                        <span id="happinessValue" class="status-value">100%</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">💤 Energy</span>
+                        <div class="bar-container">
+                            <div id="energyBar" class="bar energy-bar"></div>
+                        </div>
+                        <span id="energyValue" class="status-value">100%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="actions-panel">
+                <h2>Actions</h2>
+                <div class="action-buttons">
+                    <button class="action-btn" id="feedBtn" title="Feed your pet">
+                        <span class="emoji">🍖</span>
+                        <span>Feed</span>
+                    </button>
+                    <button class="action-btn" id="playBtn" title="Play with your pet">
+                        <span class="emoji">🎾</span>
+                        <span>Play</span>
+                    </button>
+                    <button class="action-btn" id="sleepBtn" title="Put pet to sleep">
+                        <span class="emoji">💤</span>
+                        <span>Sleep</span>
+                    </button>
+                    <button class="action-btn" id="healBtn" title="Heal your pet">
+                        <span class="emoji">💊</span>
+                        <span>Heal</span>
+                    </button>
+                    <button class="action-btn" id="bathBtn" title="Give pet a bath">
+                        <span class="emoji">🛁</span>
+                        <span>Bath</span>
+                    </button>
+                    <button class="action-btn" id="trainBtn" title="Train your pet">
+                        <span class="emoji">🏋️</span>
+                        <span>Train</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="stats-panel">
+                <h2>Statistics</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-label">Age:</span>
+                        <span id="ageStat" class="stat-value">0 days</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Level:</span>
+                        <span id="levelStat" class="stat-value">1</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Experience:</span>
+                        <span id="expStat" class="stat-value">0 / 100</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Mood:</span>
+                        <span id="moodStat" class="stat-value">😊 Happy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="message" class="message"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
