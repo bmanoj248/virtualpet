@@ -2,6 +2,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
 body {
@@ -12,6 +15,8 @@ body {
     justify-content: center;
     align-items: center;
     padding: 10px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body.night-mode {
@@ -28,6 +33,9 @@ body.night-mode {
     padding: 15px;
     animation: fadeIn 0.5s ease-in;
     transition: background 0.5s ease, box-shadow 0.5s ease;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    perspective: 1000px;
 }
 
 /* Container Theme Variations */
@@ -64,17 +72,19 @@ body.night-mode {
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translate3d(0, -20px, 0);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translate3d(0, 0, 0);
     }
 }
 
 header {
     text-align: center;
     margin-bottom: 10px;
+    backface-visibility: hidden;
+    transform: translateZ(0);
 }
 
 header h1 {
@@ -82,6 +92,9 @@ header h1 {
     font-size: 2em;
     margin-bottom: 10px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-font-smoothing: subpixel-antialiased;
 }
 
 .container.theme-light h1 {
@@ -157,6 +170,9 @@ header h1 {
 .pet-container {
     text-align: center;
     margin-bottom: 8px;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    overflow: visible;
 }
 
 .pet-scene {
@@ -166,16 +182,22 @@ header h1 {
     min-height: 320px;
     margin: 0 auto 5px;
     perspective: 800px;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: visible;
 }
 
 .pet-environment {
     position: absolute;
     inset: -30px -40px -20px;
-    background: linear-gradient(180deg, rgba(139, 154, 255, 0.2), rgba(102, 126, 234, 0.1));
+    background: transparent;
     border-radius: 30px;
     overflow: hidden;
-    filter: drop-shadow(0 10px 25px rgba(102, 126, 234, 0.3));
+    filter: none;
     pointer-events: none;
+    display: none;
 }
 
 .container.theme-light .pet-environment {
@@ -184,23 +206,11 @@ header h1 {
 }
 
 .pet-sun {
-    position: absolute;
-    top: 25px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: radial-gradient(circle, #ffdd6c 0%, #ffb347 90%);
-    box-shadow: 0 0 20px rgba(255, 221, 108, 0.8);
-    animation: pulse 4s infinite;
+    display: none;
 }
 
 .pet-cloud {
-    position: absolute;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 999px;
-    opacity: 0.7;
-    animation: cloudFloat 18s linear infinite;
+    display: none;
 }
 
 .pet-cloud::before,
@@ -287,6 +297,7 @@ header h1 {
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    overflow: visible;
 }
 
 /* Breathing animation - makes pet feel alive */
@@ -296,10 +307,10 @@ header h1 {
 
 @keyframes breathe {
     0%, 100% {
-        transform: scale(1) translateY(0);
+        transform: scale(1) translate3d(0, 0, 0);
     }
     50% {
-        transform: scale(1.02) translateY(-5px);
+        transform: scale(1.02) translate3d(0, -5px, 0);
     }
 }
 
@@ -529,11 +540,11 @@ header h1 {
 
 /* Circular Pet Border with Glow */
 .pet-circle-border {
-    width: 200px;
-    height: 200px;
+    width: 210px;
+    height: 210px;
     border-radius: 50%;
     background: linear-gradient(135deg, #4ade80, #22c55e, #16a34a);
-    padding: 8px;
+    padding: 15px;
     box-shadow: 
         0 0 20px rgba(74, 222, 128, 0.6),
         0 0 40px rgba(74, 222, 128, 0.4),
@@ -542,6 +553,13 @@ header h1 {
     position: relative;
     cursor: pointer;
     transition: transform 0.3s ease;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    will-change: transform;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    isolation: isolate;
+    overflow: visible;
 }
 
 .pet-circle-border:hover {
@@ -573,21 +591,34 @@ header h1 {
     justify-content: center;
     position: relative;
     overflow: visible;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    perspective: 1000px;
+    isolation: isolate;
+    padding: 5px;
 }
 
 .pet-emoji {
-    font-size: 105px;
+    font-size: 90px;
     line-height: 1;
     filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.2));
-    animation: petBounce 2s ease-in-out infinite;
+    animation: petBounce 2.5s ease-in-out infinite;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    will-change: transform;
+    isolation: isolate;
+    overflow: visible;
+    display: block;
+    max-width: none;
+    max-height: none;
 }
 
 @keyframes petBounce {
     0%, 100% {
-        transform: translateY(0) scale(1);
+        transform: translate3d(0, 0, 0) scale(1);
     }
     50% {
-        transform: translateY(-8px) scale(1.02);
+        transform: translate3d(0, -4px, 0) scale(1.005);
     }
 }
 
@@ -605,11 +636,22 @@ header h1 {
     justify-content: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     border: 2px solid #f0f0f0;
+    backface-visibility: hidden;
+    transform: translateZ(0);
 }
 
 .pet-info {
     text-align: center;
     width: 100%;
+    backface-visibility: hidden;
+    transform: translateZ(1px);
+    perspective: 1000px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: geometricPrecision;
+    isolation: isolate;
+    position: relative;
+    z-index: 10;
 }
 
 .pet-name-display {
@@ -618,6 +660,14 @@ header h1 {
     color: #8b9aff;
     margin-bottom: 4px;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    backface-visibility: hidden;
+    transform: translateZ(2px);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: geometricPrecision;
+    will-change: contents;
+    isolation: isolate;
+    filter: contrast(1);
 }
 
 .container.theme-light .pet-name-display {
@@ -630,6 +680,14 @@ header h1 {
     color: #a0a0a0;
     margin-bottom: 5px;
     line-height: 1.4;
+    backface-visibility: hidden;
+    transform: translateZ(2px);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: geometricPrecision;
+    will-change: contents;
+    isolation: isolate;
+    filter: contrast(1);
 }
 
 .container.theme-light .pet-details {
@@ -638,6 +696,12 @@ header h1 {
 
 .pet-stage, .pet-type-display, .pet-level, .pet-exp {
     font-weight: 500;
+    backface-visibility: hidden;
+    transform: translateZ(3px);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: geometricPrecision;
+    isolation: isolate;
 }
 
 .pet-mood-display {
@@ -648,15 +712,31 @@ header h1 {
     padding: 8px 16px;
     border-radius: 20px;
     margin-top: 8px;
+    backface-visibility: hidden;
+    transform: translateZ(2px);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    isolation: isolate;
+    filter: contrast(1);
 }
 
 .mood-emoji {
     font-size: 1.3em;
+    backface-visibility: hidden;
+    transform: translateZ(0);
 }
 
 .mood-text {
     font-weight: 600;
     color: #8b9aff;
+    backface-visibility: hidden;
+    transform: translateZ(3px);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: geometricPrecision;
+    will-change: contents;
+    isolation: isolate;
+    filter: contrast(1);
 }
 
 .container.theme-light .mood-text {
@@ -667,7 +747,7 @@ header h1 {
     position: absolute;
     left: -200px;
     top: 50%;
-    transform: translateY(-50%) translateX(-10px);
+    transform: translate3d(-10px, -50%, 0);
     background: rgba(255, 255, 255, 0.95);
     border-radius: 30px;
     padding: 8px 14px;
@@ -677,8 +757,15 @@ header h1 {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
     border: 2px solid rgba(255, 255, 255, 0.7);
     opacity: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.3s cubic-bezier(0.4, 0.0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
     z-index: 3;
+    backface-visibility: hidden;
+    will-change: transform, opacity;
+    perspective: 1000px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    transform-style: preserve-3d;
 }
 
 .thought-bubble::after {
@@ -697,17 +784,27 @@ header h1 {
 
 .thought-bubble.show {
     opacity: 1;
-    transform: translateY(-50%) translateX(0);
+    transform: translate3d(0, -50%, 0);
+    backface-visibility: hidden;
 }
 
 .bubble-emoji {
     font-size: 1.2rem;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-font-smoothing: antialiased;
 }
 
 .bubble-text {
     font-weight: 600;
     color: #555;
     white-space: nowrap;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    will-change: contents;
 }
 
 .status-bars {
@@ -798,6 +895,11 @@ header h1 {
     color: #8b9aff;
     margin-bottom: 8px;
     font-size: 1.2em;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: geometricPrecision;
 }
 
 .container.theme-light .actions-panel h2,
@@ -825,6 +927,12 @@ header h1 {
     font-size: 0.75em;
     font-weight: bold;
     color: #8b9aff;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    will-change: transform;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: geometricPrecision;
 }
 
 .container.theme-light .action-btn {
@@ -835,12 +943,12 @@ header h1 {
 .action-btn:hover:not(:disabled) {
     background: #667eea;
     color: white;
-    transform: translateY(-3px);
+    transform: translate3d(0, -3px, 0);
     box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
 }
 
 .action-btn:active:not(:disabled) {
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
 }
 
 .action-btn:disabled {
@@ -874,6 +982,9 @@ header h1 {
 .stat-label {
     font-weight: bold;
     color: #b0b0b0;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-font-smoothing: subpixel-antialiased;
 }
 
 .container.theme-light .stat-label {
@@ -883,6 +994,9 @@ header h1 {
 .stat-value {
     font-weight: bold;
     color: #8b9aff;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-font-smoothing: subpixel-antialiased;
 }
 
 .container.theme-light .stat-value {
@@ -899,15 +1013,17 @@ header h1 {
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     opacity: 0;
-    transform: translateX(400px);
+    transform: translate3d(400px, 0, 0);
     transition: all 0.3s;
     z-index: 1000;
     font-weight: bold;
+    backface-visibility: hidden;
+    will-change: transform, opacity;
 }
 
 .message.show {
     opacity: 1;
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
 }
 
 .message.error {
@@ -1612,6 +1728,9 @@ body.night-mode .container {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
     animation: modalSlideIn 0.3s ease-out;
     border: 1px solid rgba(139, 154, 255, 0.2);
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    perspective: 1000px;
 }
 
 .container.theme-light ~ .modal .modal-content {
@@ -1631,11 +1750,11 @@ body.night-mode .container {
 
 @keyframes modalSlideIn {
     from {
-        transform: translateY(-50px) scale(0.9);
+        transform: translate3d(0, -50px, 0) scale(0.9);
         opacity: 0;
     }
     to {
-        transform: translateY(0) scale(1);
+        transform: translate3d(0, 0, 0) scale(1);
         opacity: 1;
     }
 }
@@ -2743,7 +2862,11 @@ body.night-mode .container {
     cursor: pointer;
     font-size: 0.9em;
     transition: all 0.3s;
-    font-size: 0.9em;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: geometricPrecision;
 }
 
 .container.theme-light .tab-btn {
@@ -2893,6 +3016,9 @@ body.night-mode .container {
     border-radius: 8px;
     padding: 6px;
     font-size: 0.85em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: geometricPrecision;
 }
 
 .container.theme-light .activity-log {
