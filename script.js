@@ -1155,13 +1155,13 @@ class VirtualPet {
         // Update emoji size based on growth
         if (this.petEmoji) {
             const emojiSizes = {
-                baby: '140px',
-                child: '150px',
-                teen: '160px',
-                adult: '170px',
-                elder: '175px'
+                baby: '85px',
+                child: '95px',
+                teen: '105px',
+                adult: '115px',
+                elder: '120px'
             };
-            this.petEmoji.style.fontSize = emojiSizes[this.growthStage] || '160px';
+            this.petEmoji.style.fontSize = emojiSizes[this.growthStage] || '105px';
         }
     }
 
