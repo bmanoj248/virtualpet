@@ -102,7 +102,8 @@ jobs:
               comment += '⚠️ Test results not available.\n\n';
             }
             
-            comment += `**Status**: ${{ steps.run-tests.outcome === 'success' ? '✅ Passed' : '❌ Failed' }}\n\n`;
+            const testOutcome = '${{ steps.run-tests.outcome }}';
+            comment += `**Status**: ${testOutcome === 'success' ? '✅ Passed' : '❌ Failed'}\n\n`;
             comment += 'View full results in the workflow run artifacts.';
             
             github.rest.issues.createComment({
