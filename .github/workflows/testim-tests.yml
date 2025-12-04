@@ -46,8 +46,10 @@ jobs:
             --project "$TESTIM_PROJECT_ID" \
             --parallel 3 \
             --timeout 600 \
-            --retries 1 \
-            --output-dir ./testim-results || TEST_EXIT_CODE=$?
+            --retries 1 || TEST_EXIT_CODE=$?
+          
+          # Create output directory if it doesn't exist
+          mkdir -p ./testim-results
           
           # Exit with the test result code
           exit ${TEST_EXIT_CODE:-0}
