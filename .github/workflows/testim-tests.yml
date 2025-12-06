@@ -52,6 +52,12 @@ jobs:
           
           echo "Project ID: ${TESTIM_PROJECT_ID:0:10}..." # Show first 10 chars for logging
           echo "Token: ${TESTIM_API_TOKEN:0:10}..." # Show first 10 chars for verification
+          echo "Token length: ${#TESTIM_API_TOKEN} characters"
+          echo "Project ID length: ${#TESTIM_PROJECT_ID} characters"
+          
+          # Debug: Check if we can list projects with this token
+          echo "🔍 Testing token authentication by listing projects..."
+          testim projects list --token "$TESTIM_API_TOKEN" || echo "⚠️ Could not list projects - token may be invalid"
           
           # Run all tests in the project
           # Testim CLI requires --grid, --grid-id, or --host parameter
@@ -65,6 +71,12 @@ jobs:
           fi
           
           echo "Executing Testim CLI command..."
+          echo "Command: testim --token [REDACTED] --project $TESTIM_PROJECT_ID $GRID_PARAM"
+          
+          # Try using environment variables instead of flags
+          export TESTIM_TOKEN="$TESTIM_API_TOKEN"
+          export TESTIM_PROJECT="$TESTIM_PROJECT_ID"
+          
           testim \
             --token "$TESTIM_API_TOKEN" \
             --project "$TESTIM_PROJECT_ID" \
