@@ -1,6 +1,8 @@
 # Testim Authentication Troubleshooting Guide
 
-## 401 Authentication Error
+## Authentication and Project Access Errors
+
+### 401 Authentication Error
 
 If you're seeing this error:
 ```
@@ -9,6 +11,24 @@ Error authenticating user with token
 ```
 
 This means your API token is **invalid, expired, or missing required permissions**.
+
+### 400 Bad Request Error
+
+If you're seeing this error:
+```
+Error: cannot POST /executions/initialize (400)
+error fetching user info for the project
+```
+
+This means:
+- ✅ Your API token is **valid** (authentication passed)
+- ❌ But there's an issue with the **Project ID** or your **access to that project**
+
+**Common causes:**
+1. **Wrong Project ID** - The Project ID doesn't match your Testim project
+2. **No access to project** - The token belongs to a user who doesn't have access to this project
+3. **Project doesn't exist** - The Project ID points to a non-existent or deleted project
+4. **Wrong account/organization** - The token and project are in different accounts
 
 ## Step-by-Step Fix
 
@@ -109,15 +129,74 @@ Before running the workflow again, verify:
 - [ ] `TESTIM_PROJECT_ID` secret matches your project
 - [ ] You're logged into the correct Testim account
 
+## Fixing 400 "error fetching user info for the project"
+
+### Step 1: Verify Project ID
+
+1. Go to [Testim Dashboard](https://app.testim.io)
+2. **Make sure you're logged into the correct account**
+3. Select your project from the dropdown (top left)
+4. Check the URL: `https://app.testim.io/#/project/YOUR_PROJECT_ID/tests`
+5. Copy the `YOUR_PROJECT_ID` part exactly
+6. Compare it with your GitHub secret `TESTIM_PROJECT_ID`
+7. They must match **exactly** (case-sensitive, no extra spaces)
+
+### Step 2: Verify Project Access
+
+1. In Testim Dashboard, make sure you can see and access the project
+2. Try opening the project - if you can't see it, you don't have access
+3. Check if you're in the correct organization/workspace
+4. Verify the project exists and is active (not deleted)
+
+### Step 3: Verify Token Belongs to Same Account
+
+1. The API token must be created in the **same account** as the project
+2. If you have multiple Testim accounts, make sure:
+   - Token is from Account A
+   - Project is in Account A
+   - Not mixing Account A token with Account B project
+
+### Step 4: List Projects Using CLI
+
+You can verify your token can see the project:
+
+```bash
+# Install Testim CLI
+npm install -g @testim/testim-cli
+
+# List all projects accessible with your token
+testim projects list --token "YOUR_TOKEN"
+```
+
+This will show all projects your token can access. Make sure your Project ID is in the list.
+
+### Step 5: Update GitHub Secret
+
+1. Go to GitHub → Settings → Secrets → Actions
+2. Find `TESTIM_PROJECT_ID`
+3. Click "Update"
+4. Delete the old value
+5. Paste the **exact** Project ID from the Testim URL
+6. Make sure there are no extra spaces
+7. Click "Update secret"
+
 ## Still Not Working?
 
-If you've followed all steps and still get 401:
+If you've followed all steps and still get errors:
 
+**For 401 errors:**
 1. **Create a completely new token** (delete the old one first)
-2. **Double-check the Project ID** from the Testim URL
+2. Make sure token has **"Read" AND "Execute"** permissions
 3. **Verify you're in the correct Testim account/organization**
-4. **Check Testim support documentation**: [Testim CLI Docs](https://help.testim.io/docs/the-command-line-cli)
-5. **Contact Testim Support** if the issue persists
+
+**For 400 errors:**
+1. **Double-check the Project ID** from the Testim URL (must match exactly)
+2. **Verify project access** - make sure you can see the project in dashboard
+3. **Test token access** using `testim projects list --token "YOUR_TOKEN"`
+4. **Ensure token and project are in the same account**
+
+5. **Check Testim support documentation**: [Testim CLI Docs](https://help.testim.io/docs/the-command-line-cli)
+6. **Contact Testim Support** if the issue persists
 
 ## Security Notes
 
