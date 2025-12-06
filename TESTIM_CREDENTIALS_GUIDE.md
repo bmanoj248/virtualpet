@@ -105,6 +105,16 @@ TESTIM_API_TOKEN=your-api-token-here
 
 ## ❓ Troubleshooting
 
+### "401 Authentication Error" or "Error authenticating user with token"
+**This is the most common issue!** See [TESTIM_TROUBLESHOOTING.md](TESTIM_TROUBLESHOOTING.md) for detailed steps.
+
+**Quick Fix:**
+1. Go to Testim Dashboard → Settings → API & Integrations → API Tokens
+2. Create a new token with **"Read"** and **"Execute"** permissions
+3. Copy the token immediately
+4. Update `TESTIM_API_TOKEN` secret in GitHub
+5. Make sure there are no extra spaces
+
 ### "Project ID not found"
 - Make sure you're logged into the correct Testim account
 - Verify you're in the right project
@@ -115,6 +125,7 @@ TESTIM_API_TOKEN=your-api-token-here
 - Check for extra spaces before/after
 - Verify the token hasn't expired
 - Create a new token if needed
+- **Most common**: Token doesn't have "Execute" permission
 
 ### "Permission denied"
 - Check your API token has "Execute" permission
