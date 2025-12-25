@@ -1255,7 +1255,7 @@ header h1 {
     }
 }
 
-/* Pounce (Fox) */
+/* Pounce (Hamster) */
 .pet.pounce {
     animation: pounce 0.6s ease;
 }
@@ -1275,7 +1275,7 @@ header h1 {
     }
 }
 
-/* Scratch (Bear) */
+/* Scratch (Turtle) */
 .pet.scratch {
     animation: scratch 0.8s ease;
 }
@@ -1294,6 +1294,7 @@ header h1 {
         transform: rotate(-8deg);
     }
 }
+
 
 .pet.mood-happy .mouth-smile {
     border-radius: 0 0 60px 60px;
@@ -2346,110 +2347,113 @@ body.night-mode .container {
     0%, 100% { transform: translateX(-50%) scaleX(1); }
     50% { transform: translateX(-50%) scaleX(1.2); }
 }
-
-/* FOX - Orange Red Fox */
-.pet-fox .pet-body {
-    border-radius: 65px;
-    width: 168px;
-    background: radial-gradient(circle at 30% 30%, #ff8c42, #ff6b35 70%);
-    box-shadow: 0 15px 30px rgba(255, 107, 53, 0.4);
+/* HAMSTER - Cute Hamster */
+.pet-hamster .pet-body {
+    border-radius: 75px;
+    width: 170px;
+    background: radial-gradient(circle at 30% 30%, #ffe98a, #ffce59 70%);
+    box-shadow: 0 15px 30px rgba(255, 206, 89, 0.35);
 }
 
-.pet-fox .pet-belly {
-    background: rgba(255, 255, 255, 0.6);
-    width: 100px;
+.pet-hamster .pet-belly {
+    background: rgba(255, 255, 255, 0.45);
+    width: 110px;
 }
 
-.pet-fox .pet-face {
-    background: linear-gradient(135deg, #ffb380, #ff8c42);
+.pet-hamster .pet-face {
+    background: linear-gradient(135deg, #fff3b0, #ffd93d);
 }
 
-.pet-fox .pet-ear {
-    width: 48px;
-    height: 65px;
-    border-radius: 5px 5px 50% 50%;
-    top: -20px;
-}
-
-.pet-fox .left-ear {
-    left: 28px;
-    transform: rotate(-20deg);
-}
-
-.pet-fox .right-ear {
-    right: 28px;
-    transform: rotate(20deg);
-}
-
-.pet-fox .pet-tail {
-    width: 80px;
-    height: 30px;
+.pet-hamster .pet-ear {
+    width: 45px;
+    height: 60px;
     border-radius: 999px;
-    right: 0px;
-    bottom: 75px;
-    animation: foxTailSway 2.5s ease-in-out infinite;
-    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3);
+    top: -18px;
 }
 
-@keyframes foxTailSway {
-    0%, 100% { transform: rotate(15deg); }
+.pet-hamster .left-ear {
+    left: 26px;
+    transform: rotate(-12deg);
+}
+
+.pet-hamster .right-ear {
+    right: 26px;
+    transform: rotate(12deg);
+}
+
+.pet-hamster .pet-tail {
+    width: 45px;
+    height: 18px;
+    border-radius: 999px;
+    right: 6px;
+    bottom: 80px;
+    animation: hamsterTailWiggle 2.5s ease-in-out infinite;
+    box-shadow: inset -5px -2px rgba(0,0,0,0.05);
+}
+
+@keyframes hamsterTailWiggle {
+    0%, 100% { transform: rotate(10deg); }
     50% { transform: rotate(-10deg); }
 }
 
-/* BEAR - Brown Teddy Bear */
-.pet-bear .pet-body {
+ /* TURTLE - Calm Turtle */
+.pet-turtle .pet-body {
     width: 180px;
-    height: 195px;
-    border-radius: 60px;
-    background: radial-gradient(circle at 30% 30%, #8b6f47, #6b5435 70%);
-    box-shadow: 0 20px 40px rgba(107, 84, 53, 0.5);
+    height: 185px;
+    border-radius: 70px;
+    background: radial-gradient(circle at 30% 30%, #7bd389, #2f855a 70%);
+    box-shadow: 0 20px 40px rgba(47, 133, 90, 0.45);
 }
 
-.pet-bear .pet-belly {
-    background: rgba(222, 184, 135, 0.7);
-    width: 120px;
+.pet-turtle .pet-belly {
+    background: rgba(245, 245, 245, 0.35);
+    width: 125px;
 }
 
-.pet-bear .pet-face {
-    background: linear-gradient(135deg, #a98b5f, #8b6f47);
+.pet-turtle .pet-face {
+    background: linear-gradient(135deg, #a7f3d0, #34d399);
 }
 
-.pet-bear .pet-ear {
-    width: 55px;
-    height: 55px;
+/* Turtle: ears are subtle (still using your ear shapes) */
+.pet-turtle .pet-ear {
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
-    top: -5px;
+    top: -2px;
+    opacity: 0.9;
 }
 
-.pet-bear .left-ear {
-    left: 20px;
-    animation: bearEarWiggle 4s ease-in-out infinite;
+.pet-turtle .left-ear {
+    left: 22px;
+    animation: turtleEarWiggle 5s ease-in-out infinite;
 }
 
-.pet-bear .right-ear {
-    right: 20px;
-    animation: bearEarWiggle 4s ease-in-out infinite 0.5s;
+.pet-turtle .right-ear {
+    right: 22px;
+    animation: turtleEarWiggle 5s ease-in-out infinite 0.6s;
 }
 
-@keyframes bearEarWiggle {
+@keyframes turtleEarWiggle {
     0%, 100% { transform: rotate(0deg); }
-    25% { transform: rotate(-5deg); }
-    75% { transform: rotate(5deg); }
+    25% { transform: rotate(-3deg); }
+    75% { transform: rotate(3deg); }
 }
 
-.pet-bear .pet-tail {
-    width: 35px;
-    height: 35px;
+/* Turtle tail: tiny + no wag */
+.pet-turtle .pet-tail {
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    right: 15px;
-    bottom: 75px;
+    right: 18px;
+    bottom: 78px;
     animation: none;
 }
 
-.pet-bear .nose {
-    width: 20px;
-    height: 15px;
+.pet-turtle .nose {
+    width: 18px;
+    height: 12px;
 }
+
 
 /* Enhanced Pet Type Distinctions - Face Features */
 
@@ -2537,46 +2541,47 @@ body.night-mode .container {
     height: 20px;
 }
 
-/* Fox specific features */
-.pet-fox .eye {
-    width: 26px;
+/* Hamster specific features */
+.pet-hamster .eye {
+    width: 24px;
     height: 26px;
-    background: #ffd700;
+    background: #222;
 }
 
-.pet-fox .eye .pupil {
-    width: 8px;
-    height: 16px;
+.pet-hamster .eye .pupil {
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
-    background: #000;
+    background: #f7f7f7;
 }
 
-.pet-fox .nose {
-    background: #000;
-    width: 16px;
-    height: 13px;
+.pet-hamster .nose {
+    background: #ff6b6b;
+    width: 14px;
+    height: 11px;
 }
 
-.pet-fox .mouth-smile {
+.pet-hamster .mouth-smile {
     border-width: 3px;
     width: 55px;
 }
 
-/* Bear specific features */
-.pet-bear .eye {
+/* Turtle specific features */
+.pet-turtle .eye {
     width: 22px;
     height: 22px;
 }
 
-.pet-bear .nose {
-    background: #3d2817;
+.pet-turtle .nose {
+    background: #1f2937;
     border-radius: 50%;
 }
 
-.pet-bear .mouth-smile {
-    border-width: 4px;
-    border-color: #3d2817;
+.pet-turtle .mouth-smile {
+    border-width: 3px;
+    border-color: #1f2937;
 }
+
 
 /* Help Modal Styles */
 .help-section {

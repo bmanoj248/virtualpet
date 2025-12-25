@@ -20,7 +20,7 @@ class VirtualPet {
         this.size = 1.0;
         
         // Pet type system
-        this.petType = 'dog'; // dog, cat, bird, rabbit, fox, bear
+        this.petType = 'dog'; // dog, cat, bird, rabbit, hamster, turtle
         
         // Achievement system
         this.achievements = {
@@ -898,8 +898,8 @@ class VirtualPet {
                 cat: '🐱',
                 bird: '🐦',
                 rabbit: '🐰',
-                fox: '🦊',
-                bear: '🐻'
+                hamster: '🐹',
+                turtle: '🐢'
             };
             this.petEmoji.textContent = petEmojis[this.petType] || '🐶';
         }
@@ -1357,7 +1357,7 @@ class VirtualPet {
         document.getElementById('statInteractionsPerDay').textContent = interactionsPerDay;
         document.getElementById('statTotalXP').textContent = this.totalXP;
         
-        const petTypeNames = {dog: 'Dog', cat: 'Cat', bird: 'Bird', rabbit: 'Rabbit', fox: 'Fox', bear: 'Bear'};
+        const petTypeNames = {dog: 'Dog', cat: 'Cat', bird: 'Bird', rabbit: 'Rabbit', hamster: 'Hamster', turtle: 'Turtle'};
         document.getElementById('statPetType').textContent = petTypeNames[this.petType];
 
         // Achievements list
@@ -1423,7 +1423,7 @@ class VirtualPet {
         if (!this.pet) return;
         
         // Remove all pet type classes
-        this.pet.classList.remove('pet-dog', 'pet-cat', 'pet-bird', 'pet-rabbit', 'pet-fox', 'pet-bear');
+        this.pet.classList.remove('pet-dog', 'pet-cat', 'pet-bird', 'pet-rabbit', 'pet-hamster', 'pet-turtle');
         
         // Add current pet type class
         this.pet.classList.add(`pet-${this.petType}`);
@@ -1440,8 +1440,8 @@ class VirtualPet {
             cat: ['idle-tilt', 'idle-sniff', 'idle-yawn', 'stretch'],
             bird: ['hop', 'flap-wings', 'chirp', 'preen'],
             rabbit: ['hop', 'nose-twitch', 'idle-sniff', 'stand-up'],
-            fox: ['idle-tilt', 'shake-head', 'idle-sniff', 'pounce'],
-            bear: ['idle-wiggle', 'idle-yawn', 'stretch', 'scratch']
+            hamster: ['idle-tilt', 'shake-head', 'idle-sniff', 'pounce'],
+            turtle:  ['idle-wiggle', 'idle-yawn', 'stretch', 'scratch']
         };
         
         this.currentBehaviors = petBehaviors[this.petType] || petBehaviors.dog;
@@ -1809,46 +1809,48 @@ class VirtualPet {
                 osc.start(now);
                 osc.stop(now + 0.1);
             },
-            fox: () => {
-                // Yip: Quick high-pitched bark
-                const osc = audioContext.createOscillator();
-                const gain = audioContext.createGain();
-                osc.connect(gain);
-                gain.connect(audioContext.destination);
-                
-                osc.type = 'square';
-                osc.frequency.setValueAtTime(900, now);
-                osc.frequency.exponentialRampToValueAtTime(600, now + 0.08);
-                
-                gain.gain.setValueAtTime(0.3, now);
-                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.12);
-                
-                osc.start(now);
-                osc.stop(now + 0.12);
-            },
-            bear: () => {
-                // Growl: Low frequency rumble
-                const osc = audioContext.createOscillator();
-                const gain = audioContext.createGain();
-                const filter = audioContext.createBiquadFilter();
-                
-                osc.connect(filter);
-                filter.connect(gain);
-                gain.connect(audioContext.destination);
-                
-                filter.type = 'lowpass';
-                filter.frequency.value = 400;
-                
-                osc.type = 'sawtooth';
-                osc.frequency.setValueAtTime(150, now);
-                osc.frequency.linearRampToValueAtTime(120, now + 0.3);
-                
-                gain.gain.setValueAtTime(0.35, now);
-                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.35);
-                
-                osc.start(now);
-                osc.stop(now + 0.35);
+         hamster: () => {
+                    // Squeak: Short, high-pitched hamster sound
+                    const osc = audioContext.createOscillator();
+                    const gain = audioContext.createGain();
+                    osc.connect(gain);
+                    gain.connect(audioContext.destination);
+                    
+                    osc.type = 'square';
+                    osc.frequency.setValueAtTime(900, now);
+                    osc.frequency.exponentialRampToValueAtTime(600, now + 0.08);
+                    
+                    gain.gain.setValueAtTime(0.3, now);
+                    gain.gain.exponentialRampToValueAtTime(0.01, now + 0.12);
+                    
+                    osc.start(now);
+                    osc.stop(now + 0.12);
             }
+        ,
+            turtle: () => {
+            // Huff: Soft, low, gentle turtle breath
+            const osc = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+            const filter = audioContext.createBiquadFilter();
+            
+            osc.connect(filter);
+            filter.connect(gain);
+            gain.connect(audioContext.destination);
+            
+            filter.type = 'lowpass';
+            filter.frequency.value = 250;
+            
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(220, now);
+            osc.frequency.linearRampToValueAtTime(180, now + 0.4);
+            
+            gain.gain.setValueAtTime(0.18, now);
+            gain.gain.exponentialRampToValueAtTime(0.01, now + 0.45);
+            
+            osc.start(now);
+            osc.stop(now + 0.45);
+        }
+
         };
         
         const soundFunc = petSounds[this.petType] || petSounds.dog;
@@ -1857,7 +1859,7 @@ class VirtualPet {
 
     loadAudioFiles() {
         // Load pet sounds
-        const petTypes = ['dog', 'cat', 'bird', 'rabbit', 'fox', 'bear'];
+        const petTypes = ['dog', 'cat', 'bird', 'rabbit', 'hamster', 'turtle'];
         petTypes.forEach(pet => {
             const audio = new Audio();
             audio.src = `sounds/pets/${pet}.mp3`;
@@ -1960,22 +1962,24 @@ class VirtualPet {
                 ],
                 hungry: { emoji: '🥕', text: 'Carrot time?' }
             },
-            fox: {
+            hamster: {
                 happy: [
-                    { emoji: '🦊', text: 'Yip yip!' },
-                    { emoji: '✨', text: 'Clever fox!' },
-                    { emoji: '😊', text: 'Sneaky fun!' }
+                    { emoji: '🐹', text: 'Squeak squeak!' },
+                    { emoji: '✨', text: 'So fluffy!' },
+                    { emoji: '😊', text: 'Wheel time!' }
                 ],
-                hungry: { emoji: '🍖', text: 'Hunt time!' }
+                hungry: { emoji: '🌰', text: 'Snack time!' }
             },
-            bear: {
+
+            turtle: {
                 happy: [
-                    { emoji: '🐻', text: 'Grr! (happy)' },
-                    { emoji: '🍯', text: 'Honey good!' },
-                    { emoji: '😊', text: 'Bear hugs!' }
+                    { emoji: '🐢', text: '…content…' },
+                    { emoji: '✨', text: 'Slow and steady!' },
+                    { emoji: '😊', text: 'Shell-yeah!' }
                 ],
-                hungry: { emoji: '🍯', text: 'Need honey!' }
+                hungry: { emoji: '🥬', text: 'Need greens!' }
             }
+
         };
 
         const thoughts = {
