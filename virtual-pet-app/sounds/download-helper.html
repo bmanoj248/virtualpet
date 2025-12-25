@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelPaw - Sound Download Helper</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+        }
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .sound-category {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        .sound-category h2 {
+            margin-top: 0;
+            color: #667eea;
+        }
+        .sound-item {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .sound-info {
+            flex: 1;
+        }
+        .sound-name {
+            font-weight: bold;
+            color: #333;
+            font-size: 16px;
+        }
+        .search-term {
+            color: #666;
+            font-size: 14px;
+            margin: 5px 0;
+        }
+        .save-as {
+            color: #28a745;
+            font-size: 13px;
+            font-family: monospace;
+        }
+        .download-links {
+            display: flex;
+            gap: 10px;
+        }
+        .download-btn {
+            padding: 8px 16px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 13px;
+            transition: background 0.3s;
+        }
+        .download-btn:hover {
+            background: #5568d3;
+        }
+        .instructions {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .instructions h3 {
+            margin-top: 0;
+            color: #856404;
+        }
+        .folder-path {
+            background: #e9ecef;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 10px 0;
+        }
+        .emoji {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+        .checklist li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .checklist li:before {
+            content: "☐ ";
+            font-size: 20px;
+            margin-right: 10px;
+            color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔊 PixelPaw Sound Download Helper</h1>
+        <p class="subtitle">Click the links below to search for and download each sound file</p>
+
+        <div class="instructions">
+            <h3>📋 Quick Instructions</h3>
+            <ol>
+                <li>Click a search link below</li>
+                <li>Find a sound you like (< 1 second, clear quality)</li>
+                <li>Download the sound</li>
+                <li>Rename it to match the "Save as" filename</li>
+                <li>Place it in the correct folder</li>
+                <li>Repeat for all sounds!</li>
+            </ol>
+        </div>
+
+        <!-- PET SOUNDS -->
+        <div class="sound-category">
+            <h2><span class="emoji">🐾</span>Pet Sounds</h2>
+            <p>Save all files to: <span class="folder-path">sounds/pets/</span></p>
+
+            <div class="sound-item">
+                <div class="sound-info">
+                    <div class="sound-name">🐶 Dog Bark</div>
+                    <div class="search-term">Search: "dog bark short" or "dog woof"</div>
+                    <div class="save-as">💾 Save as: dog.mp3</div>
+                </div>
+                <div class="download-links">
+                    <a href="https://freesound.org/search/?q=dog+bark+short" target="_blank" class="download-btn">Freesound</a>
+                    <a href="https://pixabay.com/sound-effects/search/dog+bark/" target="_blank" class="download-btn">Pixabay</a>
+                </div>
+            </div>
+
+            <div class="sound-item">
+                <div class="sound-info">
+                    <div class="sound-name">🐱 Cat Meow</div>
+                    <div class="search-term">Search: "cat meow" or "cat single meow"</div>
+                    <div class="save-as">💾 Save as: cat.mp3</div>
+                </div>
+                <div class="download-links">
+                    <a href="https://freesound.org/search/?q=cat+meow" target="_blank" class="download-btn">Freesound</a>
+                    <a href="https://pixabay.com/sound-effects/search/cat+meow/" target="_blank" class="download-btn">Pixabay</a>
+                </div>
+            </div>
+
+            <div class="sound-item">
+                <div class="sound-info">
+                    <div class="sound-name">🐦 Bird Chirp</div>
+                    <div class="search-term">Search: "bird chirp" or "bird tweet"</div>
+                    <div class="save-as">💾 Save as: bird.mp3</div>
+                </div>
+                <div class="download-links">
+                    <a href="https://freesound.org/search/?q=bird+chirp+short" target="_blank" class="download-btn">Freesound</a>
+                    <a href="https://pixabay.com/sound-effects/search/bird+chirp/" target="_blank" class="download-btn">Pixabay</a>
+                </div>
+            </div>
+
+            <div class="sound-item">
+                <div class="sound-info">
+                    <div class="sound-name">🐰 Rabbit Squeak</div>
+                    <div class="search-term">Search: "rabbit sound" or "small animal squeak"</div>
+                    <div class="save-as">💾 Save as: rabbit.mp3</div>
+                </div>
+                <div class="download-links">
+                    <a href="https://freesound.org/search/?q=rabbit+squeak" target="_blank" class="download-btn">Freesound</a>
+                    <a href="https://pixabay.com/sound-effects/search/squeak/" target="_blank" class="download-btn">Pixabay</a>
+                </div>
+            </div>
+
+            <div class="sound-item">
+                <div class="sound-info">
+                    <div class="sound-name">🦊 Fox Yip</div>
+                    <div class="search-term">Search: "fox sound" or "fox yip yelp"</div>
+                    <div class="save-as">💾 Save as: fox.mp3</div>
+                </div>
+                <div class="download-links">
+                    <a href="https://freesound.org/search/?q=fox+yip" target="_blank" class="download-btn">Freesound</a>
+                    <a href="https://pixabay.com/sound-effects/search/fox/" target="_blank" class="download-btn">Pixabay</a>
+                </div>
+            </div>
+
+            <div class="sound-item">
+                <div class="sound-info">
+                    <div class="sound-name">🐻 Bear Growl</div>
+                    <div class="search-term">Search: "bear growl" or "bear sound short"</div>
+                    <div class="save-as">💾 Save as: bear.mp3</div>
+                </div>
+                <div class="download-links">
+                    <a href="https://freesound.org/search/?q=bear+growl" target="_blank" class="download-btn">Freesound</a>
+                    <a href="https://pixabay.com/sound-effects/search/bear+growl/" target="_blank" class="download-btn">Pixabay</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- UI SOUNDS -->
+        <div class="sound-category">
+            <h2><span class="emoji">🎮</span>UI Sounds</h2>
+            <p>Save all files to: <span class="folder-path">sounds/ui/</span></p>
+
+            <div class="sound-item">
+                <div class="sound-info">
+                    <div class="sound-name">💰 Money/Coin Sound</div>
+                    <div class="search-term">Search: "coin sound" or "money chime"</div>
+                    <div class="save-as">💾 Save as: money.mp3</div>
+                </div>
+                <div class="download-links">
+                    <a href="https://freesound.org/search/?q=coin+sound" target="_blank" class="download-btn">Freesound</a>
+                    <a href="https://pixabay.com/sound-effects/search/coin/" target="_blank" class="download-btn">Pixabay</a>
+                </div>
+            </div>
+
+            <div class="sound-item">
+                <div class="sound-info">
+                    <div class="sound-name">🏥 Heal Sound</div>
+                    <div class="search-term">Search: "heal sound" or "restoration sound game"</div>
+                    <div class="save-as">💾 Save as: heal.mp3</div>
+                </div>
+                <div class="download-links">
+                    <a href="https://freesound.org/search/?q=heal+game+sound" target="_blank" class="download-btn">Freesound</a>
+                    <a href="https://pixabay.com/sound-effects/search/heal/" target="_blank" class="download-btn">Pixabay</a>
+                </div>
+            </div>
+
+            <div class="sound-item">
+                <div class="sound-info">
+                    <div class="sound-name">😴 Sleep Sound</div>
+                    <div class="search-term">Search: "gentle chime" or "soft bell"</div>
+                    <div class="save-as">💾 Save as: sleep.mp3</div>
+                </div>
+                <div class="download-links">
+                    <a href="https://freesound.org/search/?q=gentle+chime" target="_blank" class="download-btn">Freesound</a>
+                    <a href="https://pixabay.com/sound-effects/search/chime/" target="_blank" class="download-btn">Pixabay</a>
+                </div>
+            </div>
+
+            <div class="sound-item">
+                <div class="sound-info">
+                    <div class="sound-name">⭐ Level Up Sound</div>
+                    <div class="search-term">Search: "level up" or "game fanfare"</div>
+                    <div class="save-as">💾 Save as: levelup.mp3</div>
+                </div>
+                <div class="download-links">
+                    <a href="https://freesound.org/search/?q=level+up+game" target="_blank" class="download-btn">Freesound</a>
+                    <a href="https://pixabay.com/sound-effects/search/level+up/" target="_blank" class="download-btn">Pixabay</a>
+                </div>
+            </div>
+
+            <div class="sound-item">
+                <div class="sound-info">
+                    <div class="sound-name">🏆 Achievement Sound</div>
+                    <div class="search-term">Search: "achievement" or "success sound game"</div>
+                    <div class="save-as">💾 Save as: achievement.mp3</div>
+                </div>
+                <div class="download-links">
+                    <a href="https://freesound.org/search/?q=achievement+unlock" target="_blank" class="download-btn">Freesound</a>
+                    <a href="https://pixabay.com/sound-effects/search/achievement/" target="_blank" class="download-btn">Pixabay</a>
+                </div>
+            </div>
+
+            <div class="sound-item">
+                <div class="sound-info">
+                    <div class="sound-name">❌ Error Sound</div>
+                    <div class="search-term">Search: "error beep" or "wrong sound"</div>
+                    <div class="save-as">💾 Save as: error.mp3</div>
+                </div>
+                <div class="download-links">
+                    <a href="https://freesound.org/search/?q=error+beep" target="_blank" class="download-btn">Freesound</a>
+                    <a href="https://pixabay.com/sound-effects/search/error/" target="_blank" class="download-btn">Pixabay</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- CHECKLIST -->
+        <div class="instructions">
+            <h3>✅ Download Checklist</h3>
+            <ul class="checklist">
+                <li>Download dog.mp3 and place in sounds/pets/</li>
+                <li>Download cat.mp3 and place in sounds/pets/</li>
+                <li>Download bird.mp3 and place in sounds/pets/</li>
+                <li>Download rabbit.mp3 and place in sounds/pets/</li>
+                <li>Download fox.mp3 and place in sounds/pets/</li>
+                <li>Download bear.mp3 and place in sounds/pets/</li>
+                <li>Download money.mp3 and place in sounds/ui/</li>
+                <li>Download heal.mp3 and place in sounds/ui/</li>
+                <li>Download sleep.mp3 and place in sounds/ui/</li>
+                <li>Download levelup.mp3 and place in sounds/ui/</li>
+                <li>Download achievement.mp3 and place in sounds/ui/</li>
+                <li>Download error.mp3 and place in sounds/ui/</li>
+            </ul>
+        </div>
+
+        <div class="instructions" style="background: #d4edda; border-color: #28a745;">
+            <h3 style="color: #155724;">🎉 After Downloading</h3>
+            <ol>
+                <li>Open <strong>index.html</strong> in your browser</li>
+                <li>Click <strong>⚙️ Settings</strong></li>
+                <li>Change <strong>Sound Mode</strong> to "Realistic Sounds (MP3)"</li>
+                <li>Close settings and test by clicking your pet!</li>
+            </ol>
+            <p style="margin: 15px 0 0 0; font-weight: bold; color: #155724;">
+                💡 Tip: Missing files? No problem! The game automatically uses synthesized sounds as backup.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+

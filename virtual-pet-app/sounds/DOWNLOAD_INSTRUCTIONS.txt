@@ -1,0 +1,77 @@
+PIXELPAW - MP3 SOUND DOWNLOAD GUIDE
+=====================================
+
+QUICK DOWNLOAD INSTRUCTIONS:
+---------------------------
+
+Visit these FREE sound libraries and download the files:
+
+1. FREESOUND.ORG (Best Option - Free, High Quality)
+   https://freesound.org
+
+   Search for each sound and download:
+   
+   PET SOUNDS (save to sounds/pets/ folder):
+   - Search "dog bark short" → Save as "dog.mp3"
+   - Search "cat meow" → Save as "cat.mp3"
+   - Search "bird chirp" → Save as "bird.mp3"
+   - Search "rabbit squeak" → Save as "rabbit.mp3"
+   - Search "fox yip" → Save as "fox.mp3"
+   - Search "bear growl short" → Save as "bear.mp3"
+
+   UI SOUNDS (save to sounds/ui/ folder):
+   - Search "coin sound" → Save as "money.mp3"
+   - Search "heal sound game" → Save as "heal.mp3"
+   - Search "gentle chime" → Save as "sleep.mp3"
+   - Search "level up fanfare" → Save as "levelup.mp3"
+   - Search "achievement unlock" → Save as "achievement.mp3"
+   - Search "error beep" → Save as "error.mp3"
+
+2. ZAPSPLAT.COM (Also Free - Requires Account)
+   https://www.zapsplat.com
+   - Create free account
+   - Search for sounds above
+   - Download as MP3
+
+3. PIXABAY (No Account Needed)
+   https://pixabay.com/sound-effects/
+   - Browse sound effects
+   - Filter by "Animals" or "Interface"
+   - Download directly
+
+TIPS:
+-----
+- Look for sounds under 1 second
+- Choose clear, high-quality recordings
+- Download as MP3 format (or convert using online-audio-converter.com)
+- Rename files to match exactly: dog.mp3, cat.mp3, etc.
+
+FOLDER STRUCTURE:
+-----------------
+PetApp/
+└── sounds/
+    ├── pets/
+    │   ├── dog.mp3      <-- Place pet sounds here
+    │   ├── cat.mp3
+    │   ├── bird.mp3
+    │   ├── rabbit.mp3
+    │   ├── fox.mp3
+    │   └── bear.mp3
+    └── ui/
+        ├── money.mp3    <-- Place UI sounds here
+        ├── heal.mp3
+        ├── sleep.mp3
+        ├── levelup.mp3
+        ├── achievement.mp3
+        └── error.mp3
+
+AFTER DOWNLOADING:
+------------------
+1. Place all files in correct folders
+2. Open index.html in browser
+3. Click Settings ⚙️
+4. Change "Sound Mode" to "Realistic Sounds (MP3)"
+5. Test by clicking your pet or using actions!
+
+If a file is missing, the game automatically uses synthesized sounds as backup.
+
